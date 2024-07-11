@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Thankyou";
+    Layout = "~/Views/Shared/_LayoutSuccess.cshtml";
+    ViewBag.link = "https://amca.ae/";
+}
+
+@model AMCA_IT_SOLUTIONS.Models.ValidationModel
+
+@{
+   string page = HttpContext.Current.Session["txtPageName"].ToString();
+}
+
+@if (page == "Index")
+{
+    ViewBag.link = "https://amcaauditing.com/";
+
+}
+else if(page == "ContactUs")
+{
+    ViewBag.link = "https://amca.ae/";
+}
+
+@*//else if (page == "AuditAssurance")
+//{
+//    ViewBag.link = "https://www.amcaauditing.com/audit-services-in-dubai";
+//}
+//else if (page == "Esr")
+//{
+//    ViewBag.link = "https://www.amcaauditing.com/accounting-bookkeeping-services";
+//}
+//else if (page == "Vat")
+//{
+//    ViewBag.link = "https://www.amcaauditing.com/vat-consultant-in-dubai";
+//}
+//else if (page == "Liquidation")
+//{
+//    ViewBag.link = "https://www.amcaauditing.com/company-liquidation-in-dubai";
+//}*@
+
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 d-flex min-vh-100 justify-content-center align-items-center">
+            <div class="row">
+
+                <div class="col-md-6 text-md-start text-center">
+                    <h1>Thank You! <span class="theme-text">@TempData["ConcernPerson"]</span></h1>
+                    <p class="mb-5">Your request have been successfully submitted.</p>
+                    <p>Our consultant will get back to you shortly.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="../../images/mailGraphics.svg" class="img-fluid" alt="YTAMCA" title="Thank You">
+                </div>
+                <div class="text-md-start text-center mt-3 mt-md-0">
+                    <p><strong>You can now apply for,</strong></p>
+                    <ul class="px-5 theme-list">
+                        <li>Golden Visa Eligibility Assessment</li>
+                        <li>Golden Visa Eligibility Assessment And Process Assistance</li>
+                    </ul>
+                    <p>
+                        <strong>Click on the below link to get started.</strong>
+                    </p>
+
+                    @if (page == "ContactUs" || page == "Index")
+                    {
+                        <div class="mb-5">
+                            <a href=@ViewBag.link class="btn btn-theme">Know more about ITAMCA</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mb-5">
+                            <a href=@ViewBag.link class="btn btn-primary">Know more </a>
+                        </div>
+                    }
+                    <strong><a href="@Url.Action("Index", "Home")" style="color: #dca953"><u>Go To Homepage</u></a></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

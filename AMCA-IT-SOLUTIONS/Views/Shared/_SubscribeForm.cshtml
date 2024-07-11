@@ -1,0 +1,315 @@
+﻿@model AMCA_IT_SOLUTIONS.Models.Validation
+
+@if (ViewBag.Controller == "Home")
+{
+    using (Ajax.BeginForm("SubscribForm", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "Services")
+{
+    using (Ajax.BeginForm("SubscribForm", "Services", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "Career")
+{
+    using (Ajax.BeginForm("SubscribForm", "Career", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+
+@if (ViewBag.Controller == "ContentWriting")
+{
+    using (Ajax.BeginForm("SubscribForm", "ContentWriting", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "DigitalMarketing")
+{
+    using (Ajax.BeginForm("SubscribForm", "DigitalMarketing", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "GraphicDesign")
+{
+    using (Ajax.BeginForm("SubscribForm", "GraphicDesign", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "ServerSolutions")
+{
+    using (Ajax.BeginForm("SubscribForm", "ServerSolutions", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "WebDesignAndDevelopment")
+{
+    using (Ajax.BeginForm("SubscribForm", "WebDesignAndDevelopment", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "subscribe-form", @id = "SubscribForm" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Grid row-->
+        <div class="row align-items-center justify-content-center pb-2">
+            <!--Grid column-->
+            <div class="col-auto">
+                <p class="pt-2">
+                    <strong><label class="form-label" for="EmailSubscribe">Sign up for our newsletter</label></strong>
+                </p>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div class="form-outline form-white mb-2 position-relative">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-auto">
+                <!-- Submit button -->
+                <button type="submit" class="btn py-2 btn-outline-light mb-2">
+                    Subscribe
+                </button>
+            </div>
+            <!--Grid column-->
+        </div>
+
+    }
+}
+@*alert message text common*@
+<div id="alertMessage"> </div>
+

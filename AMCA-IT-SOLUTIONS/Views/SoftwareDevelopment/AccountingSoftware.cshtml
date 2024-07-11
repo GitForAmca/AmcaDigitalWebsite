@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Controller = "SoftwareDevelopment";
+    ViewBag.CurrentPage = "Social Media Marketing Services";
+    ViewBag.Title = "Social Media Marketing Services";
+    ViewBag.PageTitle = "Social Media Marketing Services";
+    ViewBag.Keyword = "IT solutions in uae, web development in uae,digital marketing, digital solutions in uae, seo company, web development company in dubai, graphic design company in dubai";
+    ViewBag.Description = "Our services include website design & Web Strategy Development, Content Management Systems (CMS), Content Development, Domain & Hosting, and E-Commerce Website Development to make your site easy to navigate and conveniently accessible.";
+}
+@Html.Partial("_TopBannerBreadCrumb")
+<section class="py-5 filter-grayscale-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article class="article-left-side"></article>
+            </div>
+            @Html.Partial("_SideBarServices")
+        </div>
+    </div>
+</section>
+@Html.Partial("_ContactDetailsAndQueryFormSec")
+<script type="text/javascript">
+    $(document).ready(function () {
+        history.pushState("", document.title, window.location.origin + "/accounting-software-development-and-services");
+    })
+</script>

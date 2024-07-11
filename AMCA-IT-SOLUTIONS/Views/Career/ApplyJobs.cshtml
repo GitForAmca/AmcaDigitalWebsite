@@ -1,0 +1,358 @@
+﻿@model AMCA_IT_SOLUTIONS.Models.Validation
+@using CaptchaMvc.HtmlHelpers;
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@{
+    ViewBag.Controller = "Career";
+    ViewBag.CurrentPage = "Apply Jobs";
+    ViewBag.Title = "Admin Executive | Executive Assistant | Executive Assistant Job Description | Jobs in Dubai";
+    ViewBag.PageTitle = "Apply Jobs";
+    ViewBag.Keyword = "jobs in uae, jobs in dubai, we are hiring, arabic auditor jobs in dubai, office boy, auditor jobs in dubai, aministrative specialist jobs in dubai, tele sales executive jobs in dubai, ";
+    ViewBag.Description = "We are looking for an Admin Executive. Job Descriptions: Opening a file for clients, Displaying knowledge about the different zones in the UAE. Arranging employee's conveyances for the client meeting and/or visit purposes.";
+    ViewBag.topBannerImageSrc = "../../images/careers.svg";
+}
+@Html.Partial("_TopBannerBreadCrumb")   
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (Model != null)
+                {
+                    <p>Applying For: <strong class="JobTitle text-primary" id="JobTitleHead">@Model.JobTitle</strong></p>
+                }
+                else
+                {
+                    <p>Applying For: <strong class="JobTitle text-primary" id="JobTitleHead"></strong></p>
+                }
+
+            </div> <!-- end of col-md-12 -->
+            <div class="col-md-12">
+                <hr />
+                <h3><strong>How did you hear about this job? <span class="text-danger">*</span></strong></h3>
+               
+            </div> <!-- end of col-md-12 -->
+            <div class="col-md-12">
+                @using (Html.BeginForm("RequestJob", "Career", FormMethod.Post, new { enctype = "multipart/form-data", @id = "CareerForm" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="form-row row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Please indicate how you hear about this job?<span>*</span></label>
+                                @Html.DropDownListFor(model => model.AboutJob, ViewBag.AboutJob as SelectList, "--Pleas Select--", new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.AboutJob, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @if (Model == null)
+                        {
+
+                            <div class="col-md-6">
+                                @*@Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control", @placeholder = "", @readonly = "true" })*@
+
+                                <div class="form-group">
+                                    <label>Applying For<span>*</span></label>
+                                    @Html.DropDownList("reSelectJob", new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text="--Please Select--", Value = ""},
+                                            new SelectListItem{ Text="Full Stack Developer", Value = "Full Stack Developer" },
+                                            new SelectListItem{ Text="Digital Marketing Specialist", Value = "Digital Marketing Specialist" },
+                                            new SelectListItem{ Text="SEO Experts", Value = "SEO Experts" },
+                                            new SelectListItem{ Text="Web Designer", Value = "Web Designer" },
+                                            new SelectListItem{ Text="Graphic Designer", Value = "Graphic Designer" },
+                                        }, new { @class = "form-control form-select", @onchange = "jobTitleFunction(event)" })
+                                    @Html.ValidationMessageFor(model => model.reSelectJob, "", new { @class = "text-danger" })
+
+                                </div>
+
+                            </div>
+
+                        }
+                        @Html.HiddenFor(model => model.JobTitle)
+                    </div>
+
+
+                    <div class="form-row row">
+                        <div class="col-md-12">
+                            <h3><strong>Personal Information</strong></h3>
+                            <p>Please Enter all relevent information in the below.</p>
+                        </div>
+                    </div>
+                    <div class="form-row row">
+                        <div class="col-md-4">
+                            <label>Candidate Name<span>*</span></label>
+                            @Html.TextBoxFor(model => model.CandidateName, new { @class = "form-control", @placeholder = "Concern Person" })
+                            @Html.ValidationMessageFor(model => model.CandidateName, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Email Id<span>*</span></label>
+                                @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control", @placeholder = "Email Id" })
+                                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Country Code<span>*</span></label>
+                                        @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList" })
+                                        @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Mobile No<span>*</span></label>
+                                        @Html.TextBoxFor(model => model.MobileNo, new { @class = "form-control nanCheck", @placeholder = "Contact No", maxlength = "10" })
+                                        @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Nationality</label>
+                                <div class="form-group">
+                                    @Html.DropDownListFor(model => model.Nationality, ViewBag.Nationality as SelectList, "--Please-Select--", new { @class = "form-control form-select search-SelectList" })
+                                    @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Date of Birth<span>*</span></label>
+
+                                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                    @Html.TextBoxFor(model => model.DoB, new { @class = "form-control", @type = "date", @placeholder = "Date of Birth", @maxlength = "10" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.DoB, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Gender<span>*</span></label>
+                                    @Html.DropDownList("Gender", new List<SelectListItem>
+                                        {
+                                        new SelectListItem{ Text="--Please Select--", Value = "" },
+                                        new SelectListItem{ Text="Male", Value = "Male" },
+                                        new SelectListItem{ Text="Female", Value = "Female" },
+                                        new SelectListItem{ Text="Others", Value = "Others" },
+                                        }, new { @class = "form-control form-select" })
+                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Marital Status<span>*</span></label>
+                                @Html.DropDownList("MaritalStatus", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Please Select--", Value = "" },
+                                    new SelectListItem{ Text="Single", Value = "Single" },
+                                    new SelectListItem{ Text="Married", Value = "Married" },
+                                    new SelectListItem{ Text="Others", Value = "Others" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.MaritalStatus, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>How many years of experience do you have?<span>*</span></label>
+                                @Html.DropDownList("Experience", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Please Select--", Value = "" },
+                                    new SelectListItem{ Text="Freshers", Value = "Freshers" },
+                                    new SelectListItem{ Text="< 1 Years", Value = "<1 Year" },
+                                    new SelectListItem{ Text="1-2 Years" , Value="1-2 Years" },
+                                    new SelectListItem{ Text="2-3 Years" , Value="2-3 Years" },
+                                    new SelectListItem{ Text="3-4 Years" , Value="3-4 Years" },
+                                    new SelectListItem{ Text="4-5 Years" , Value="4-5 Years" },
+                                    new SelectListItem{ Text="5 Years >" , Value="5 Years >" },
+                                                                                      }, new { @class="form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>How many years of UAE experience do you have?<span>*</span></label>
+                                @Html.DropDownList("UAEExperience", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Please Select--", Value = "" },
+                                    new SelectListItem{ Text="Freshers", Value = "Freshers" },
+                                    new SelectListItem{ Text="< 1 Years", Value = "< 1 Years" },
+                                    new SelectListItem{ Text="1-2 Years", Value = "1-2 Years" },
+                                    new SelectListItem{ Text="2-3 Years", Value = "2-3 Years" },
+                                    new SelectListItem{ Text="3-4 Years", Value = "3-4 Years" },
+                                    new SelectListItem{ Text="4-5 Years", Value = "4-5 Years" },
+                                    new SelectListItem{ Text="5 Years >", Value = "5 Years >" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.UAEExperience, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Last Designation / Current Designation</label>
+                                @Html.TextBoxFor(model => model.LastDesignation, new { @class = "form-control", @placeholder = "Last Designation" })
+                                @*@Html.ValidationMessageFor(model => model.LastDesignation, "", new { @class = "text-danger" })*@
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Current Location</label>
+                                @Html.DropDownListFor(model => model.CurrentLocation, ViewBag.CurrentLocation as SelectList, "--Please Select--", new { @class = "form-control search-SelectList" })
+                                @Html.ValidationMessageFor(model => model.CurrentLocation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Salary Expectation<span>*</span></label>
+                                @Html.DropDownList("SalaryExpectation", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Please Select--", Value = "" },
+                                    new SelectListItem{ Text="< 1K AED", Value = "< 1K AED" },
+                                    new SelectListItem{ Text="1K-2K AED", Value = "1K-2K AED" },
+                                    new SelectListItem{ Text="2K-3K AED", Value = "2K-3K AED" },
+                                    new SelectListItem{ Text="3K-4K AED", Value = "3K-4K AED" },
+                                    new SelectListItem{ Text="4K-5K AED", Value = "4K-5K AED" },
+                                    new SelectListItem{ Text="5K-6K AED", Value = "5K-6K AED" },
+                                    new SelectListItem{ Text="6K-7K AED", Value = "6K-7K AED" },
+                                    new SelectListItem{ Text="7K-8K AED", Value = "7K-8K AED" },
+                                    new SelectListItem{ Text="8K-9K AED", Value = "8K-9K AED" },
+                                    new SelectListItem{ Text="9K-10K AED", Value = "9K-10K AED" },
+                                    new SelectListItem{ Text="10K AED >", Value = "10K AED >" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.SalaryExpectation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Last Salary Drawn</label>
+                                @Html.DropDownList("LastSalaryDrawn", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Please Select--", Value = "" },
+                                    new SelectListItem{ Text="< 1K AED", Value = "< 1K AED" },
+                                    new SelectListItem{ Text="1K-2K AED", Value = "1K-2K AED" },
+                                    new SelectListItem{ Text="2K-3K AED", Value = "2K-3K AED" },
+                                    new SelectListItem{ Text="3K-4K AED", Value = "3K-4K AED" },
+                                    new SelectListItem{ Text="4K-5K AED", Value = "4K-5K AED" },
+                                    new SelectListItem{ Text="5K-6K AED", Value = "5K-6K AED" },
+                                    new SelectListItem{ Text="6K-7K AED", Value = "6K-7K AED" },
+                                    new SelectListItem{ Text="7K-8K AED", Value = "7K-8K AED" },
+                                    new SelectListItem{ Text="8K-9K AED", Value = "8K-9K AED" },
+                                    new SelectListItem{ Text="9K-10K AED", Value = "9K-10K AED" },
+                                    new SelectListItem{ Text="10K AED >", Value = "10K AED >" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.LastSalaryDrawn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Notice Period<span>*</span></label>
+                                @Html.DropDownList("NoticePeriod", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Please Select--", Value = "" },
+                                    new SelectListItem { Text = "Immediate Join", Value = "Immediate Join" },
+                                    new SelectListItem{ Text="< 1 Month", Value = "< 1 Month" },
+                                    new SelectListItem{ Text="1 - 2 Month", Value = "1 - 2 Month" },
+                                    new SelectListItem{ Text="2 - 3 Month", Value = "2 - 3 Month" },
+                                    new SelectListItem{ Text="3 Month >", Value = "3 Month >" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.NoticePeriod, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Current VISA Type<span>*</span></label>
+                                @Html.DropDownList("VisaType", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Select Please--", Value = "" },
+                                    new SelectListItem{ Text="Employment Visa", Value = "Employment Visa" },
+                                    new SelectListItem{ Text="Visit Visa", Value = "Visit Visa" },
+                                    new SelectListItem{ Text="Sponsorship Visa - Spouse", Value = "Sponsorship Visa - Spouse" },
+                                    new SelectListItem{ Text="Sponsorship Visa - Father", Value = "Sponsorship Visa - Father" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.VisaType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Highest Qualification<span>*</span></label>
+                                @Html.DropDownList("HighestQualification", new List<SelectListItem>
+                                    {
+                                    new SelectListItem{ Text="--Select Please--", Value = "" },
+                                    new SelectListItem{ Text="Graduate", Value = "Graduate" },
+                                    new SelectListItem{ Text="Masters", Value = "Masters" },
+                                    }, new { @class = "form-control form-select" })
+                                @Html.ValidationMessageFor(model => model.HighestQualification, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group overflow-hidden">
+                                <label>CV<span>*</span></label>
+                                <div class="form-control">
+                                    @Html.TextBoxFor(m => m.PostedFile, new { type = "file" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.PostedFile, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group overflow-hidden">
+                                <label class="control-label" for="CaptchaInputText">Fill the Captcha<span>*</span></label>
+                                <div class="d-lg-flex align-items-center justify-content-between">
+                                    <div class="position-relative form-input d-lg-flex align-items-center justify-content-between" id="captcha">
+                                        @Scripts.Render("~/bundles/jquery")
+                                        @Html.Captcha("Refresh", "", 5)
+                                    </div>
+                                </div>
+                                @*alert message text common*@
+                                <p class="text-danger text-center mt-n1" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group text-end">
+                                <input type="submit" value="Enquire Now" class="btn bg-primary text-white d-inline-block w-auto form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div> <!-- end of col-md-12 -->
+        </div>
+        <!-- end of form-row row -->
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        history.pushState("", document.title, window.location.origin + "/apply-job");
+    });
+
+    function jobTitleFunction(e) {
+        document.getElementById("JobTitle").value = e.target.value;
+        var x = e.target;
+        document.getElementById("JobTitleHead").innerHTML  =  x.value;
+
+    }
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        //alert(maxDate);
+        $('#DoB').attr('max', maxDate);
+    });
+
+</script>
+

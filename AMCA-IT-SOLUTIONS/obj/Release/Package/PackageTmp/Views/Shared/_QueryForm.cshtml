@@ -1,0 +1,477 @@
+﻿@model AMCA_IT_SOLUTIONS.Models.Validation
+@using CaptchaMvc.HtmlHelpers;
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+@if (ViewBag.Controller == "Home")
+{
+    using (Html.BeginForm("QueryForm", "Home", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    //using (Ajax.BeginForm("QueryForm", "Services", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "Services")
+{
+    using (Html.BeginForm("QueryForm", "Services", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    //using (Ajax.BeginForm("QueryForm", "Services", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "WebDesignAndDevelopment")
+{
+    using (Html.BeginForm("QueryForm", "WebDesignAndDevelopment", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    //using (Ajax.BeginForm("QueryForm", "Services", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowSuccess" }, new { @class = "needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+@if (ViewBag.Controller == "ServerSolutions")
+{
+    using (Html.BeginForm("QueryForm", "ServerSolutions", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+@*ContentWriting*@
+@if (ViewBag.Controller == "ContentWriting")
+{
+    using (Html.BeginForm("QueryForm", "ContentWriting", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+@*@DigitalMarketing@*@
+@if (ViewBag.Controller == "DigitalMarketing")
+{
+    using (Html.BeginForm("QueryForm", "DigitalMarketing", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+@*@GraphicDesign@*@
+@if (ViewBag.Controller == "GraphicDesign")
+{
+    using (Html.BeginForm("QueryForm", "GraphicDesign", FormMethod.Post, new { @class = "enquiry-form needs-validation", @id = "QueryForm", @novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-theme">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 pe-md-0">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.ConcernPerson, new { htmlAttributes = new { @class = "form-control", @placeholder = "Full Name", @required = "true" } })
+                        @Html.ValidationMessageFor(model => model.ConcernPerson, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+
+            @*<div class="form-group">
+                    @Html.DropDownListFor(model => model.TradeLicenseAuthority, ViewBag.TradeLicenseAuthority as SelectList, "-- Trade License Authority --", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.TradeLicenseAuthority, "", new { @class = "text-danger" })
+                </div>*@
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ServiceList, ViewBag.ServiceList as SelectList, "-- Please select Service--", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.ServiceList, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.AboutTamca, ViewBag.AboutTamca as SelectList, "Where did you here about Us?", new { @class = "form-control form-select", @required = "true" })
+                @Html.ValidationMessageFor(model => model.AboutTamca, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    @Html.DropDownListFor(model => model.CountryCode, new SelectList(ViewBag.CountryList, "value", "text", "+971"), "Code", new { @class = "form-control form-select search-SelectList", @required = "true" })
+                    @Html.ValidationMessageFor(model => model.CountryCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control nanCheck", @placeholder = "Mobile/Phone Number", @required = "true" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group overflow-hidden">
+                @*<label class="control-label" for="CaptchaInputText">Fill the Captcha</label>*@
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="position-relative d-flex align-items-center justify-content-between" id="captcha">
+                        @Scripts.Render("~/bundles/jquery")
+                        @Html.Captcha("Refresh", "", 5)
+                    </div>
+                </div>
+            </div>
+            @*alert message text common*@
+            <p class="text-danger text-end" id="CapErrorMessage">@ViewBag.ErrorMessage</p>
+            <div class="form-group">
+                <input type="submit" value="Enquire Now" class="btn bg-primary text-light form-control" />
+            </div>
+        </div>
+
+    }
+}
+
+
+
+

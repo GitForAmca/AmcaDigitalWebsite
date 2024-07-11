@@ -1,0 +1,176 @@
+﻿@if (ViewBag.Controller == "Services")
+{
+    <aside class="col-lg-4" id="stickySidebar">
+        <div class="theme-box" id="makeSticky">
+            <h4>Our Main Services</h4>
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <td><a href="@Url.Action("ContentWriting", "Services")">Content Writing</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("DigitalMarketing", "Services")">Digital Marketing</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("GraphicDesign", "Services")">Graphic Design</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("ServerSolutions", "Services")">Server Solutions</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("SoftwareDevelopment", "Services")">Software Development</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("VideoProduction", "Services")">Video Production</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("WebDesignAndDevelopment", "Services")">Web Design & Development</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </aside>
+}
+@if (ViewBag.Controller == "WebDesignAndDevelopment")
+{
+    <aside class="col-lg-4" id="stickySidebar">
+        <div class="theme-box" id="makeSticky">
+            <h4>Web Design & Development</h4>
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <td><a href="@Url.Action("LandingPageDevelopment", "WebDesignAndDevelopment")">Landing Page Development</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("MobileAppDevelopment", "WebDesignAndDevelopment")">Mobile App Development</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("ContentManagementSystem", "WebDesignAndDevelopment")">Content Management System</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("ECommerce", "WebDesignAndDevelopment")">E-Commerce</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("WebDevelopment", "WebDesignAndDevelopment")">Web Development</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("WebDesigningAndRedesigning", "WebDesignAndDevelopment")">Web Designing & Redesigning</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("FullStackDevelopment", "WebDesignAndDevelopment")">Full Stack Development</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("WebsiteManagement", "WebDesignAndDevelopment")">Website Management</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("PaymentGateway", "WebDesignAndDevelopment")">Payment Gateway</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aside>
+}
+@if (ViewBag.Controller == "ServerSolutions")
+{
+    <aside class="col-lg-4" id="stickySidebar">
+        <div class="theme-box" id="makeSticky">
+            <h4>Server Solutions</h4>
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <td><a href="@Url.Action("WebHostingServices", "ServerSolutions")">Web-Hosting Services</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("DomainServices", "ServerSolutions")">Domain Services</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aside>
+}
+@if (ViewBag.Controller == "ContentWriting")
+{
+    <aside class="col-lg-4" id="stickySidebar">
+        <div class="theme-box" id="makeSticky">
+            <h4>Content Writing Services</h4>
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <td><a href="@Url.Action("SeoCopywritingServices", "ContentWriting")">Seo Copywriting</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("NewsletterWritingServices", "ContentWriting")">Newsletter Writing</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("TechnicalWritingServices", "ContentWriting")">Technical Writing</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("BrochureWritingServices", "ContentWriting")">Brochure Writing</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aside>
+}
+
+@if (ViewBag.Controller == "GraphicDesign")
+{
+    <aside class="col-lg-4" id="stickySidebar">
+        <div class="theme-box" id="makeSticky">
+            <h4>Graphic Design Services</h4>
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <td><a href="@Url.Action("LogoDesignServices", "GraphicDesign")">Logo Design</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("BusinessCardDesignServices", "GraphicDesign")"> Business Card </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("BrochureDesignServices", "GraphicDesign")">Brochure Design </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("NewsletterDesignServices", "GraphicDesign")">Newsletter Design </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("CompanyProfileServices", "GraphicDesign")">Company Profile </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("TemplateDesignServices", "GraphicDesign")">Template Design  </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aside>
+}
+@if (ViewBag.Controller == "DigitalMarketing")
+{
+    <aside class="col-lg-4" id="stickySidebar">
+        <div class="theme-box" id="makeSticky">
+            <h4>Digital Marketing Services</h4>
+            <table class="w-100">
+                <tbody>
+                    <tr>
+                        <td><a href="@Url.Action("SEOServices", "DigitalMarketing")">SEO Services</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("SEMServices", "DigitalMarketing")">SEM Services</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("SocialMediaMarketingServices", "DigitalMarketing")">SMM Services</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("ConversionRateOptimizationServices", "DigitalMarketing")">CRO Services</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("EmailMarketingServices", "DigitalMarketing")">EM Services </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="@Url.Action("PPCServices", "DigitalMarketing")">PPC Services</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aside>
+}

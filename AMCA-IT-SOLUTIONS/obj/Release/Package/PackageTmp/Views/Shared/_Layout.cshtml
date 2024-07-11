@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AMCA DIGITAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#caa669">
+    <title>@ViewBag.Title | @ViewBag.CurrentPage</title>
+    <meta name="keywords" content="@ViewBag.Keyword" />
+    <meta name="description" content="@ViewBag.Description" />
+    <link href="~/Images/favicon.svg" rel="shortcut icon" type="image/x-icon" sizes="57x57" />
+    <!-- Mobile (Android, iOS & others) -->
+    <link rel="apple-touch-icon" href="~/Images/favicon.svg" sizes="57x57">
+    <link rel="canonical" href="@Request.Url.AbsoluteUri" />
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    
+    @*<div id="PageLoader">
+        <h2 class="section-title"> Web & <span>IT Solutions </span> in Dubai, UAE</h2>
+        <div class="progress-bar">
+            <span class="bar">
+                <span class="progress"></span>
+            </span>
+        </div>
+    </div>*@
+    
+    @Html.Partial("_Header")
+    <main>
+        @RenderBody()
+    </main>
+
+    @Html.Partial("_Footer")
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        jQuery.event.special.touchstart = {
+            setup: function (_, ns, handle) {
+                this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.touchmove = {
+            setup: function (_, ns, handle) {
+                this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.wheel = {
+            setup: function (_, ns, handle) {
+                this.addEventListener("wheel", handle, { passive: true });
+            }
+        };
+        jQuery.event.special.mousewheel = {
+            setup: function (_, ns, handle) {
+                this.addEventListener("mousewheel", handle, { passive: true });
+            }
+        };
+    </script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
+
+    @*<script>
+        $(window).on('load', function () {
+           $('#PageLoader').fadeOut(1000);
+        });
+    </script>*@
+</body>
+</html>
